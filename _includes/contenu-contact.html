@@ -1,0 +1,19 @@
+<div class="contact-actions">
+    {% if site.data.general.email_contact %}
+    <a href="mailto:{{ site.data.general.email_contact }}" class="contact-btn contact-btn-email">
+        <svg class="contact-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+        <span>{{ site.data.general.email_contact }}</span>
+    </a>
+    {% endif %}
+
+
+    {% if site.data.general.instagram and site.data.general.instagram_tag %}
+    <a href="{{ site.data.general.instagram }}" target="_blank" rel="noopener noreferrer" class="contact-btn contact-btn-insta">
+        <img src="{{ '/assets/icons/Instagram_Glyph_Black.svg' | relative_url }}" alt="" class="contact-icon-img">
+        <span>{{ site.data.general.instagram_tag }}</span>
+    </a>
+    {% endif %}
+</div>

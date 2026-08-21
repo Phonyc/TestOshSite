@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>{{ site.data.general.nav_title }} - {{ page.title }}</title>
+    <link href="{{ '/assets/css/style.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/carousel.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/items.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/navbar.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/section-carte-fond.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/section-blanc.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/contenu-contact.css' | relative_url }}" rel="stylesheet">
+</head>
+
+<body>
+
+{% include header.html %}
+
+
+{% include section-blanc.html
+id=page.title
+title=page.title
+text=content
+%}
+<script src="{{ '/assets/js/navbar.js' | relative_url }}"></script>
+</body>
+
+</html>

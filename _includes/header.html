@@ -1,0 +1,52 @@
+<header class="header">
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="{{ '/' | relative_url }}" style="text-decoration: none; color: unset;">
+                <span class="site-title">{{ site.data.general.nav_title }}</span>
+            </a>
+        </div>
+
+        <div class="nav-center">
+            <ul class="nav-links">
+                {% for item in site.data.general.menu %}
+                <li><a class="nav-link" href="{{ item.url }}">{{ item.label }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        {% if site.data.general.instagram %}
+        <div class="nav-right">
+            <a class="instagram-link" href="{{ site.data.general.instagram }}" rel="noopener noreferrer"
+               target="_blank">
+                <img alt="Instagram"
+                     class="instagram-icon"
+                     src="{{ '/assets/icons/Instagram_Glyph_Black.svg' | relative_url }}">
+            </a>
+        </div>
+        {% endif %}
+
+        <button aria-controls="mobileMenu" aria-expanded="false" aria-label="Ouvrir le menu" class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </nav>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-links">
+        {% for item in site.data.general.menu %}
+        <li><a class="mobile-link" href="{{ item.url }}">{{ item.label }}</a></li>
+        {% endfor %}
+
+        {% if site.data.general.instagram %}
+        <li class="mobile-instagram-item">
+            <a class="instagram-link" href="{{ site.data.general.instagram }}" rel="noopener noreferrer"
+               target="_blank">
+                <img alt="Instagram"
+                     class="instagram-icon"
+                     src="{{ '/assets/icons/Instagram_Glyph_Black.svg' | relative_url }}">
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</div>

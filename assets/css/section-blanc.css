@@ -1,0 +1,10 @@
+.section-blanc {
+    padding: 4rem 1.5rem;
+    scroll-margin-top: 40px;
+}
+
+.section-blanc-text {
+    max-width: 750px;
+    margin: 0 auto 2.5rem auto;
+
+}

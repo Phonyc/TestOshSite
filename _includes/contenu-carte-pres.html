@@ -1,0 +1,20 @@
+<div class="section-carte-fond-text-container">
+    <h1 class="titre-section">{{ include.title}}</h1>
+    <div class="texte">
+        {{ include.texte | markdownify | truncatewords: 80 }}
+    </div>
+    {% unless include.cacher_voir_plus %}
+    <div class="link-more">
+        <a class="nav-link" href="{{ include.url }}">
+            <span>Voir plus</span>
+            <span class="arrow">→</span>
+        </a>
+    </div>
+    {% endunless %}
+
+</div>
+{% if include.img %}
+<div class="section-carte-fond-photo-container">
+    <img class="section-carte-fond-photo" src="{{ include.img | relative_url }}" alt="Image de présentation">
+</div>
+{% endif %}

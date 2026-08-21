@@ -1,0 +1,156 @@
+media:
+  input: assets/images
+  output: /assets/images
+
+content:
+  - name: concerts
+    label: Concerts
+    type: collection
+    path: _concerts
+    fields:
+      - name: layout
+        type: string
+        hidden: true
+      - name: title
+        label: Nom du concert
+        type: string
+        required: true
+      - name: date
+        label: Date et heure
+        type: date
+        default: ""
+        options:
+          time: true
+          format: yyyy-MM-dd HH:mm
+        required: true
+      - name: lieu
+        label: Lieu
+        type: string
+        options:
+          maxlength: 26
+      - name: affiche
+        label: Affiche
+        type: image
+      - name: lien_reservation
+        label: Lien de réservation
+        type: string
+      - name: photos
+        label: Photos
+        type: image
+        list: true
+      - name: body
+        label: Description
+        type: rich-text
+      - name: infos_pratiques
+        label: Infos Pratiques
+        type: rich-text
+      - name: infos_reservation
+        label: Infos Réservation
+        type: rich-text
+
+  - name: histoire
+    label: Histoire
+    type: collection
+    path: _histoire
+    fields:
+      - name: title
+        label: Titre de l'entrée
+        type: string
+      - name: date
+        label: Date
+        type: date
+      - name: affichage_date
+        label: Date affichée
+        type: string
+      - name: body
+        label: Contenu
+        type: rich-text
+
+  - name: divers
+    label: Divers Photos
+    type: collection
+    path: _divers
+    fields:
+      - name: title
+        label: Titre
+        type: string
+      - name: photos
+        label: Photos
+        type: image
+        list: true
+
+  - name: page_accueil
+    label: Page Accueil
+    type: file
+    path: index.md
+    fields:
+      - name: title
+        type: string
+      - name: layout
+        type: string
+        hidden: true
+      - name: texte_presentation
+        label: Texte de Présentation
+        type: rich-text
+      - name: bg_pres
+        label: Arrière plan présentation
+        type: image
+      - name: fg_pres
+        label: Image à côté du texte
+        type: image
+      - name: bg_recrutement
+        label: Arrière plan recrutement
+        type: image
+      - name: recrutement_titre
+        label: Titre de la section recrutement
+        type: string
+      - name: recrutement_desc
+        label: Texte de la section recrutement
+        type: rich-text
+      - name: contact_desc
+        label: Texte de la section contact
+        type: rich-text
+
+  - name: page_histoire
+    label: Page Histoire
+    type: file
+    path: histoire.md
+    fields:
+      - name: layout
+        type: string
+        hidden: true
+      - name: title
+        type: string
+        hidden: true
+      - name: body
+        label: Introduction de la page Histoire
+        type: rich-text
+
+  - name: general
+    label: Elements Généraux
+    type: file
+    path: _data/general.yml
+    fields:
+      - name: instagram_tag
+        label: Compte Instagram
+        type: string
+      - name: instagram
+        label: Lien Instagram (URL complète)
+        type: string
+      - name: nav_title
+        label: Titre de la barre de navigation
+        type: string
+      - name: menu
+        label: Liens de la barre de navigation
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Titre du lien (ex. Concerts)
+            type: string
+          - name: url
+            label: URL / Ancre (ex. /#concerts)
+            type: string
+      - name: email_contact
+        label: Adresse email de contact
+        type: string

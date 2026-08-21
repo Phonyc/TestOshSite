@@ -1,0 +1,13 @@
+title: "Orchestre Symphonique Hoche"
+description: "Site de l'orchestre"
+
+future: true
+
+collections:
+  concerts:
+    output: true
+    permalink: /concerts/:slug/
+  histoire:
+    output: false
+  divers:
+    output: false

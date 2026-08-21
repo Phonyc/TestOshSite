@@ -1,0 +1,11 @@
+instagram_tag: orchestre.hoche
+instagram: https://www.instagram.com/orchestre.hoche/
+nav_title: Orchestre Symphonique Hoche
+menu:
+  - label: Présentation
+    url: /
+  - label: Concerts
+    url: /#concerts
+  - label: Contact
+    url: /#contact
+email_contact: mail@mail.mail

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>{{ site.data.general.nav_title }} - {{ page.title }}</title>
+    <link href="{{ '/assets/css/style.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/carousel.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/items.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/navbar.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/section-carte-fond.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/section-blanc.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/contenu-contact.css' | relative_url }}" rel="stylesheet">
+</head>
+
+<body>
+
+{% include header.html %}
+
+{% capture contenu_pres %}
+{% include contenu-carte-pres.html
+title=page.title
+texte=page.texte_presentation
+img=page.fg_pres
+url="/histoire"
+%}
+{% endcapture %}
+
+{% include section-carte-fond.html
+id="presentation"
+bg_img=page.bg_pres
+contenu=contenu_pres
+%}
+
+
+
+{% include section-carousel.html
+
+%}
+
+
+{% capture contenu_recrutement %}
+{% include contenu-carte-pres.html
+title=page.recrutement_titre
+texte=page.recrutement_desc
+cacher_voir_plus=""
+img=page.fg_recrutement
+%}
+{% endcapture %}
+
+{% include section-carte-fond.html
+id="recrutement"
+contenu=contenu_recrutement
+bg_img=page.bg_recrutement
+%}
+
+
+{% capture contenu_contact %}
+{% include contenu-contact.html %}
+{% endcapture %}
+
+
+{% include section-blanc.html
+id="contact"
+title="Nous Contacter"
+text=page.contact_desc
+contenu_autre=contenu_contact
+%}
+
+<script src="{{ '/assets/js/navbar.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/color-thief.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/couleurs.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/carousel.js' | relative_url }}"></script>
+
+<div id="copyright">
+    <p>Orchestre Symphonique Hoche</p>
+</div>
+
+</body>
+
+</html>

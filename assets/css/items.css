@@ -1,0 +1,98 @@
+.btn {
+    padding: 0.9rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background var(--transition);
+    text-box: trim-both cap alphabetic;
+}
+
+.btn-primary {
+    background: var(--text-color);
+    color: #fff;
+    flex: 1;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    flex: 1;
+}
+
+
+
+.pills-overlay {
+    position: absolute;
+    max-width: 100%;
+    padding: 12px;
+    z-index: 5;
+
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    align-items: center;
+}
+
+.pills-desk {
+    display: none;
+}
+
+.pill {
+    padding: 0.5rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    backdrop-filter: blur(2px) saturate(120%);
+
+    text-box: trim-both cap alphabetic;
+}
+
+.pill-date {
+    background-color: rgb(0 0 0 / 0.85);
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    text-box: trim-both;
+}
+
+.pill-location {
+    background: var(--gray-light);
+    background-color: rgb(245 245 245 / 0.2);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+
+}
+@media (min-width: 768px) {
+    .pills-mobile {
+        display: none;
+    }
+
+    .pills-desk {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        gap: 6px;
+        align-items: flex-start;
+    }
+}
+.concert-actions {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: auto;
+}
+
+.link-more > a::after {
+    transform-origin: left;
+}
+
+.link-more {
+    margin-top: 1rem;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}

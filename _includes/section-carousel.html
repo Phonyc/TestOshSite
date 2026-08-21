@@ -1,0 +1,108 @@
+<section class="section-concerts" id="concerts">
+    <div class="container">
+        <h1 class="titre-section">Nos Concerts</h1>
+    </div>
+    <div class="carousel-wrapper">
+
+        <button aria-label="Précédent" class="carousel-btn btn-prev" id="carousel-prev">
+            <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                 stroke-width="2"
+                 viewBox="0 0 24 24" width="20">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </button>
+
+        <div class="carousel-container" id="concert-carousel">
+
+            {% assign today = 'now' | date: "%Y%m%dT%Hh%M" %}
+            {% assign sorted_concerts = site.concerts | sort: 'date' %}
+            {% assign next_found = false %}
+
+            {% for concert in sorted_concerts %}
+
+                {% assign concert_date = concert.date | date: "%Y%m%d%Hh%M" %}
+
+                {% assign id_card = concert.url %}
+                {% if concert_date >= today and next_found == false %}
+                    {% assign id_card = "next-concert" %}
+                    {% assign next_found = true %}
+                {% endif %}
+
+                <article class="concert-card" id="{{ id_card }}"
+                         style="--poster-url: url('{{ concert.affiche | relative_url }}');">
+
+
+                    <img alt="Affiche - {{ concert.title }}"
+                         class="concert-poster"
+                         src="{{ concert.affiche | default: '/assets/images/default-concert.jpg' }}">
+
+                    <div class="pills-overlay pills-mobile">
+                        {% if concert_date < today %}
+                            <span class="pill pill-date">{{ concert.date | date: "%d/%m/%Y - %Hh%M" }}</span>
+                        {% else %}
+                            <span class="pill pill-date">{{ concert.date | date: "%d/%m - %Hh%M" }}</span>
+                        {% endif %}
+
+                        {% if concert.lieu and concert_date >= today %}
+                            <span class="pill pill-location">{{ concert.lieu | truncate: 26, "" }}</span>
+                        {% endif %}
+
+                        {% if concert_date < today %}
+                            <span class="pill pill-date">Passé</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="concert-content">
+                        <h3>{{ concert.title }}</h3>
+                        <div class="pills-overlay pills-desk">
+                            <span class="pill pill-date">{{ concert.date | date: "%d/%m/%Y - %Hh%M" }}</span>
+                            {% if concert.lieu and concert_date >= today %}
+                                <span class="pill pill-location">{{ concert.lieu }}</span>
+                            {% endif %}
+
+                            {% if concert_date < today %}
+                                <span class="pill pill-date">Passé</span>
+                            {% endif %}
+                        </div>
+                        <div class="concert-desc">
+                            {{ concert.content | markdownify | truncatewords: 70 }}
+                        </div>
+
+                        <div class="concert-actions">
+                            <a class="btn btn-outline" href="{{ concert.url }}">Voir plus</a>
+                            {% if concert_date >= today and concert.lien_reservation %}
+                                <a class="btn btn-primary" href="{{ concert.lien_reservation }}"
+                                   target="_blank">Réserver</a>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </article>
+            {% endfor %}
+
+        </div>
+
+        <button aria-label="Suivant" class="carousel-btn btn-next" id="carousel-next">
+            <svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                 stroke-width="2"
+                 viewBox="0 0 24 24" width="20">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </button>
+        <div class="carousel-legend container" aria-hidden="true">
+            <div class="legend-item legend-prev">
+                <span class="legend-arrow">←</span>
+                <span class="legend-text">Anciens concerts</span>
+            </div>
+
+            <div class="legend-item legend-next">
+                <span class="legend-text">Prochains concerts</span>
+                <span class="legend-arrow">→</span>
+            </div>
+        </div>
+    </div>
+
+</section>
+<style>
+
+</style>

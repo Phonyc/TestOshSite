@@ -1,0 +1,14 @@
+<section id="{{ include.id }}" class="section-blanc">
+    <div class="container">
+        <h1 class="titre-section">{{ include.title }}</h1>
+
+        {% if include.text %}
+        <div class="section-blanc-text texte">
+            {{ include.text | markdownify }}
+        </div>
+        {% endif %}
+
+        {{ include.contenu_autre }}
+
+    </div>
+</section>

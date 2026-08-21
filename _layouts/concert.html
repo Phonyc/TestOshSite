@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>{{ site.data.general.nav_title }} - {{ page.title }}</title>
+    <link href="{{ '/assets/css/style.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/items.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/navbar.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/concert.css' | relative_url }}" rel="stylesheet">
+</head>
+
+<body>
+
+{% include header.html %}
+
+{% assign today = 'now' | date: "%Y%m%d" %}
+{% assign concert_date = page.date | date: "%Y%m%d" %}
+{% assign is_past = false %}
+{% if concert_date < today %}
+{% assign is_past = true %}
+{% endif %}
+
+
+<section class="section-concert-view concert-card">
+    <div class="container">
+        <div class="concert-container">
+
+            <div class="affiche">
+                <img class="concert-poster" src="{{ page.affiche | default: '/assets/images/default-concert.jpg' | relative_url }}" alt="{{ page.title }}">
+            </div>
+
+            <div class="infos">
+                <h1 class="concert-page-title">{{ page.title }}</h1>
+
+                <div class="pills-overlay pills-concert-view">
+                    <span class="pill pill-date">{{ page.date | date: "%d/%m/%Y - %Hh%M" }}</span>
+                    {% if page.lieu %}
+                    <span class="pill pill-location">{{ page.lieu }}</span>
+                    {% endif %}
+                    {% if is_past %}
+                    <span class="pill pill-date">Passé</span>
+                    {% endif %}
+                </div>
+
+                <div class="texte">
+                    {{ content | markdownify }}
+                </div>
+
+                {% if page.infos_pratiques %}
+                <div class="infos-pratiques">
+                    <h2>Infos pratiques</h2>
+                    <div class="texte">
+                        {{ page.infos_pratiques | markdownify }}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if concert_date >= today%}
+                    {% if page.infos_reservation or page.lien_reservation%}
+                    <div class="infos-pratiques">
+                        <h2>Réservation</h2>
+                        <div class="texte">
+                            {{ page.infos_reservation | markdownify }}
+                        </div>
+                        <div class="concert-actions concert-actions-concert-view">
+                            {% if concert_date >= today and page.lien_reservation %}
+                            <a class="btn btn-primary" href="{{ page.lien_reservation }}"
+                               target="_blank">Réserver</a>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endif %}
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script src="{{ '/assets/js/navbar.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/color-thief.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/couleurs.js' | relative_url }}"></script>
+<div id="copyright">
+    <p>Orchestre Symphonique Hoche</p>
+</div>
+
+</body>
+
+</html>
