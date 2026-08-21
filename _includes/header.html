@@ -9,7 +9,7 @@
         <div class="nav-center">
             <ul class="nav-links">
                 {% for item in site.data.general.menu %}
-                <li><a class="nav-link" href="{{ item.url }}">{{ item.label }}</a></li>
+                <li><a class="nav-link" href="{{ item.url | relative_url }}">{{ item.label }}</a></li>
                 {% endfor %}
             </ul>
         </div>

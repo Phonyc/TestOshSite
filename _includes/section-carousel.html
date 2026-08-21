@@ -34,7 +34,7 @@
 
                     <img alt="Affiche - {{ concert.title }}"
                          class="concert-poster"
-                         src="{{ concert.affiche | default: '/assets/images/default-concert.jpg' }}">
+                         src="{{ concert.affiche | relative_url }}">
 
                     <div class="pills-overlay pills-mobile">
                         {% if concert_date < today %}
@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="concert-actions">
-                            <a class="btn btn-outline" href="{{ concert.url }}">Voir plus</a>
+                            <a class="btn btn-outline" href="{{ concert.url | relative_url }}">Voir plus</a>
                             {% if concert_date >= today and concert.lien_reservation %}
                                 <a class="btn btn-primary" href="{{ concert.lien_reservation }}"
                                    target="_blank">Réserver</a>
