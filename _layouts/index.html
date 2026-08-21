@@ -16,13 +16,13 @@
 <body>
 
 {% include header.html %}
-
+{% assign histoire_url = 'histoire' | relative_url %}
 {% capture contenu_pres %}
 {% include contenu-carte-pres.html
 title=page.title
 texte=page.texte_presentation
 img=page.fg_pres
-url="/histoire"
+url=histoire_url
 %}
 {% endcapture %}
 
