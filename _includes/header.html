@@ -35,7 +35,7 @@
 <div class="mobile-menu" id="mobileMenu">
     <ul class="mobile-nav-links">
         {% for item in site.data.general.menu %}
-        <li><a class="mobile-link" href="{{ item.url }}">{{ item.label }}</a></li>
+        <li><a class="mobile-link" href="{{ item.url | relative_url }}">{{ item.label }}</a></li>
         {% endfor %}
 
         {% if site.data.general.instagram %}
